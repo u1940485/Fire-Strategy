@@ -161,7 +161,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+    void LateUpdate()
     {
 
         if (Input.GetKeyDown(KeyCode.Escape) && menu.activeSelf == false)
@@ -315,9 +315,6 @@ public class GameManager : MonoBehaviour
 
         }
         List<Vector3> path = astarPathFind(movableCharacter, movableCharacter.transform.position, newPos);
-        foreach (Vector3 v in path) {
-            Debug.Log(v);
-        }
         
         tileManager.updateMap(movableCharacter.transform.position, null);
         tileManager.updateMap(newPos, movableCharacter);
@@ -919,7 +916,6 @@ public class GameManager : MonoBehaviour
 
             // found  the goal
             if (current_node.Equals(end_node)) {
-                Debug.Log(i);
                 List<Vector3> path = new List<Vector3>();
                 Node current = current_node;
                 while (current != null) {
